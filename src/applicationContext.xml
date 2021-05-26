@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xsi:schemaLocation="http://www.springframework.org/schema/beans
+       http://www.springframework.org/schema/beans/spring-beans.xsd">
+<!-- 将指定类TestDIDaoImpl配置给Spring,让Spring创建其实例 -->
+    <bean id="testDIDao" class="dao.TestDIDaoImpl"/>
+    <bean id="testDIService" class="service.TestDIServiceImpl">
+        <!-- 将TestDIDao注入到TestDIServiceImpl类的属性testDIDao上-->
+        <constructor-arg index="0" ref="testDIDao"/>
+        <!--constructor-arg用于定义类构造方法的参数 index定义参数的位置，ref指定某个实例的引用,如参数是常量，ref由value代替-->
+    </bean>
+</beans>
